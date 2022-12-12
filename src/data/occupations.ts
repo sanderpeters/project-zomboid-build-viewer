@@ -57,7 +57,7 @@ export const occupationData: Record<Occupation, OccupationData> = {
   },
   [Occupation.Burglar]: {
     type: Occupation.Burglar,
-    title: 'Bruglar',
+    title: 'Burglar',
     description:
       'Burglars are the best choice for those who prefer to sneak past zombies rather than fight them. They can, however, move quickly while in combat, making them very versatile. Burglars can also hotwire vehicles without the necessary character skills.',
     startingPoints: -6,

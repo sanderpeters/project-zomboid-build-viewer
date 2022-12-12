@@ -4,25 +4,17 @@ export type Entries<T> = {
 
 export type Theme = 'dark' | 'light'
 
+export enum Skill {
+  Fitness = 'Fitness',
+  Strength = 'Strength',
+  Nimble = 'Nimble',
+  Sneaking = 'Sneaking',
+}
+
 export interface SkillData {
   type: Skill
   level: number
   multiplier: number
-}
-
-export interface OccupationData {
-  type: Occupation
-  title: string
-  description: string
-  startingPoints: number
-  skills: SkillData[]
-}
-
-export enum Skill {
-  Fitness,
-  Strength,
-  Nimble,
-  Sneaking,
 }
 
 export enum Occupation {
@@ -50,9 +42,17 @@ export enum Occupation {
   Unemployed,
 }
 
+export interface OccupationData {
+  type: Occupation
+  title: string
+  description: string
+  startingPoints: number
+  skills: SkillData[]
+}
+
 export enum Trait {
   AdrinalineJunkie,
-  athletic,
+  Athletic,
   Brave,
   CatsEyes,
   Dextrous,
@@ -76,4 +76,13 @@ export enum Trait {
   Strong,
   ThickSkinned,
   Wakeful,
+}
+
+export interface TraitData {
+  type: Trait
+  title: string
+  description: string
+  skills: SkillData[]
+  startingPoints: number
+  excludes: Trait[]
 }
