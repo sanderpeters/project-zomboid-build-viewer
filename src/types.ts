@@ -10,6 +10,14 @@ export interface SkillData {
   multiplier: number
 }
 
+export interface OccupationData {
+  type: Occupation
+  title: string
+  description: string
+  startingPoints: number
+  skills: SkillData[]
+}
+
 export enum Skill {
   Fitness,
   Strength,

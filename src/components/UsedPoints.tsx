@@ -12,6 +12,7 @@ const UsedPoints: React.VFC = () => {
       className={classNames('font-bold', {
         'text-red-500': usedPoints < 0,
         'text-green-500': usedPoints > 0,
+        'text-white': usedPoints === 0,
       })}
     >
       {usedPoints}
