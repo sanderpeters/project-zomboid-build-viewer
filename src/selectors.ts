@@ -40,27 +40,25 @@ export const skillsQuery = selector<SkillData[]>({
       .map((trait) => traitData[trait].skills)
       .flat()
 
-    // merge both modifiers into 1 array
+    // merge both skill arrays into 1 array
     const skills = [...skillsFromOccupation, ...skillsFromTraits]
 
     // apply skills of the same type to each other
     return skills.reduce<SkillData[]>((skills, skill) => {
-      const existingSkill = skills.some(({ type }) => type === skill.type)
+      const existingSkillIndex = skills.findIndex(
+        ({ type }) => type === skill.type,
+      )
 
-      if (!existingSkill) {
+      if (existingSkillIndex < 0) {
         return [...skills, skill]
       }
 
-      return skills.map((s) => {
-        if (s.type !== skill.type) {
-          return s
-        }
-
-        return {
-          type: s.type,
-          level: Math.min(10, s.level + skill.level),
-          multiplier: s.multiplier * skill.multiplier,
-        }
+      return Object.assign([], skills, {
+        [existingSkillIndex]: {
+          type: skill.type,
+          level: Math.min(10, skill.level + skills[existingSkillIndex].level),
+          multiplier: skill.multiplier * skills[existingSkillIndex].multiplier,
+        },
       })
     }, [])
   },
